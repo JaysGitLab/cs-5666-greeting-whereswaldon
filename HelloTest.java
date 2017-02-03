@@ -14,7 +14,7 @@ public class HelloTest {
 	@Test
 	public void checkOutput() {
 		Hello.print();
-		assertEquals("Hello, World!\n", stdout.toString());
+		assertEquals("Hello, Cthulhu!\n", stdout.toString());
 	}
 	@After
 	public void releaseOutput() {
