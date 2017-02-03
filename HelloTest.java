@@ -13,7 +13,7 @@ public class HelloTest {
 	}
 	@Test
 	public void checkOutput() {
-		Hello.print();
+		Hello.main(new String[]{});
 		assertEquals("Hello, Cthulhu!\n", stdout.toString());
 	}
 	@After
