@@ -26,6 +26,6 @@ public class HelloTest {
 	@Test
 	public void checkOutputWithName() {
 		Hello.main(new String[]{"Zeus"});
-		assertEquals("Hello, Cthulhu!\n", stdout.toString());
+		assertEquals("Hello, Zeus!\n", stdout.toString());
 	}
 }
