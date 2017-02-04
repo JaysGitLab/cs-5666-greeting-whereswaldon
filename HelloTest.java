@@ -1,7 +1,7 @@
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -21,35 +21,37 @@ public class HelloTest {
 	@Test
 	public void checkOutput() {
 		Hello.main(new String[]{});
-		assertEquals("Hello, Cthulhu!\n", stdout.toString());
+		assertTrue(stdout.toString().startsWith("Hello, Cthulhu!\n"));
 	}
 	@Test
 	public void checkOutputWithName() {
 		Hello.main(new String[]{"Zeus"});
-		assertEquals("Hello, Zeus!\n", stdout.toString());
+		assertTrue(stdout.toString().startsWith("Hello, Zeus!\n"));
 	}
 	@Test
 	public void checkOutputWithBadName() {
 		Hello.main(new String[]{"xerxes"});
-		assertEquals("Hello, Xerxes!\n", stdout.toString());
+		assertTrue(stdout.toString().startsWith("Hello, Xerxes!\n"));
 	}
 	@Test
 	public void checkOutputWithMeFlagBefore() {
 		Hello.main(new String[]{"-meJay","xerxes"});
-		assertEquals("Hello, Xerxes!\nI am Jay.\n", stdout.toString());
+		assertTrue(stdout.toString().startsWith("Hello, Xerxes!\nI am Jay.\n"));
 	}
 	@Test
 	public void checkOutputWithMeFlagBeforeMulti() {
 		Hello.main(new String[]{"-me", "jay", "xerxes"});
-		assertEquals("Hello, Xerxes!\nI am jay.", stdout.toString());
+		assertTrue(stdout.toString().startsWith("Hello, Xerxes!\nI am jay.\n"));
+	}
+
+	@Test
+	public void checkOutputWithMeFlagAfter() {
+		Hello.main(new String[]{"xerxes", "-mejay"});
+		assertTrue(stdout.toString().startsWith("Hello, Xerxes!\nI am jay.\n"));
 	}
 	@Test
 	public void checkOutputWithMeFlagAfterMulti() {
 		Hello.main(new String[]{"xerxes", "-me", "jay"});
-		assertEquals("Hello, Xerxes!\nI am jay.", stdout.toString());
-	}	@Test
-	public void checkOutputWithMeFlagAfter() {
-		Hello.main(new String[]{"xerxesI am jay.", "-mejay"});
-		assertEquals("Hello, Xerxes!\n", stdout.toString());
+		assertTrue(stdout.toString().startsWith("Hello, Xerxes!\nI am jay.\n"));
 	}
 }
