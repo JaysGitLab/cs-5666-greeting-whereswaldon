@@ -7,17 +7,30 @@ import java.io.PrintStream;
 
 public class HelloTest {
 	private static ByteArrayOutputStream stdout = new ByteArrayOutputStream();
+	private static PrintStream originalOut;
 	@Before
 	public void captureOutput() {
+		originalOut = System.out;
+		stdout = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(stdout));
-	}
-	@Test
-	public void checkOutput() {
-		Hello.print();
-		assertEquals("Hello, World!\n", stdout.toString());
 	}
 	@After
 	public void releaseOutput() {
-		System.setOut(null);
+		System.setOut(originalOut);
+	}
+	@Test
+	public void checkOutput() {
+		Hello.main(new String[]{});
+		assertEquals("Hello, Cthulhu!\n", stdout.toString());
+	}
+	@Test
+	public void checkOutputWithName() {
+		Hello.main(new String[]{"Zeus"});
+		assertEquals("Hello, Zeus!\n", stdout.toString());
+	}
+	@Test
+	public void checkOutputWithBadName() {
+		Hello.main(new String[]{"xerxes"});
+		assertEquals("Hello, Xerxes!\n", stdout.toString());
 	}
 }
