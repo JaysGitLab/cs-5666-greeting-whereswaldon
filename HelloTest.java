@@ -33,4 +33,23 @@ public class HelloTest {
 		Hello.main(new String[]{"xerxes"});
 		assertEquals("Hello, Xerxes!\n", stdout.toString());
 	}
+	@Test
+	public void checkOutputWithMeFlagBefore() {
+		Hello.main(new String[]{"-meJay","xerxes"});
+		assertEquals("Hello, Xerxes!\nI am Jay.\n", stdout.toString());
+	}
+	@Test
+	public void checkOutputWithMeFlagBeforeMulti() {
+		Hello.main(new String[]{"-me", "jay", "xerxes"});
+		assertEquals("Hello, Xerxes!\nI am jay.", stdout.toString());
+	}
+	@Test
+	public void checkOutputWithMeFlagAfterMulti() {
+		Hello.main(new String[]{"xerxes", "-me", "jay"});
+		assertEquals("Hello, Xerxes!\nI am jay.", stdout.toString());
+	}	@Test
+	public void checkOutputWithMeFlagAfter() {
+		Hello.main(new String[]{"xerxesI am jay.", "-mejay"});
+		assertEquals("Hello, Xerxes!\n", stdout.toString());
+	}
 }
