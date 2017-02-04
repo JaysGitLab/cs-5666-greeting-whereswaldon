@@ -8,7 +8,8 @@ public class Hello {
 	}
 
 	public static void print(String name) {
-		System.out.println("Hello, "+name+"!");
+    		String first = ("" + name.charAt(0)).toUpperCase();
+		System.out.println("Hello, "+first + name.substring(1)+"!");
 	}
 
 	public static void print() {
