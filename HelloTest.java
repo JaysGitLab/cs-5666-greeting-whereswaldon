@@ -28,4 +28,9 @@ public class HelloTest {
 		Hello.main(new String[]{"Zeus"});
 		assertEquals("Hello, Zeus!\n", stdout.toString());
 	}
+	@Test
+	public void checkOutputWithBadName() {
+		Hello.main(new String[]{"xerxes"});
+		assertEquals("Hello, Xerxes!\n", stdout.toString());
+	}
 }
