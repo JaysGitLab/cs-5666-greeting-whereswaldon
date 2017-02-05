@@ -6,6 +6,7 @@ public class Hello {
 		setArgs(args);
                 print(friend);
 		introduce();
+		ask();
 	}
 
         /**
@@ -36,6 +37,13 @@ public class Hello {
         */
 	private static void introduce() {
     		System.out.println("I am "+name+".");
+	}
+
+	/**
+	ask asks the user a question
+	*/
+	private static void ask() {
+		System.out.println("How are you?");
 	}
 
         /**
