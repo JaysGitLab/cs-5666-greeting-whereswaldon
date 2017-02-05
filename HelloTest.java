@@ -54,4 +54,9 @@ public class HelloTest {
 		Hello.main(new String[]{"xerxes", "-me", "jay"});
 		assertTrue(stdout.toString().startsWith("Hello, Xerxes!\nI am jay.\n"));
 	}
+	@Test
+	public void checkOutputForQuestion() {
+		Hello.main(new String[]{});
+		assertTrue(stdout.toString().contains("How are you?"));
+	}
 }
