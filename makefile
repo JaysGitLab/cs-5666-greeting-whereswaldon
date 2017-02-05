@@ -19,7 +19,8 @@ $(JUNIT_JAR):
 $(HAMCREST_JAR):
 	curl $(HAMCREST_URI) -o $(HAMCREST_JAR) --silent --location
 
-clean:
+cleanjars:
 	rm $(JUNIT_JAR)
 	rm $(HAMCREST_JAR)
+clean:
 	rm *.class
